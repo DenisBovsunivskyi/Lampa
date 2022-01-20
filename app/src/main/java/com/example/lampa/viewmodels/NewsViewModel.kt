@@ -20,9 +20,9 @@ class NewsViewModel @Inject constructor(
 
      fun getNews() {
         viewModelScope.launch {
-            newsRepository.getNews()
-                .catch { }
-                .collect { println(handleResponse(it)?.newsDto) }
+         val news =newsRepository.getNews()
+            println(news)
+
         }
 
     }
