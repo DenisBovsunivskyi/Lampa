@@ -1,6 +1,7 @@
 package com.example.lampa.network
 
 import com.example.lampa.network.dto.NewsDto
+import retrofit2.Response
 import retrofit2.http.*
 
 interface NewsApi {
@@ -9,7 +10,9 @@ interface NewsApi {
 
     }
     @GET(API_GET_NEWS)
-    suspend fun getNews():List<NewsDto>
+    suspend fun getNews(
+        @Query("page") page:Int?
+    ): Response<List<NewsDto>>
 
 
 

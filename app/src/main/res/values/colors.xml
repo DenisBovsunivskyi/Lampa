@@ -14,4 +14,5 @@
     <color name="transparent">#00000000</color>
     <color name="tab_unselected_gray">#a1a1a1</color>
     <color name="blue_color">#00adef</color>
+    <color name="news_background">#ececec</color>
 </resources>

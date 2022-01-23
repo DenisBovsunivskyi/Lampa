@@ -6,6 +6,8 @@ data class NewsDto (
     var title:String?,
     var type:String?,
     var img:String?,
-    @Json(name = "click_url") var clickUrl:String,
-    var time:String,
+    @Json(name = "click_url") var clickUrl:String?,
+    var time:String?,
+    var top:String?,
+    var url:String?
 )

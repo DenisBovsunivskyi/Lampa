@@ -1,10 +1,14 @@
 package com.example.lampa.viewmodels
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.lampa.base.viewmodels.ActionMode
 import com.example.lampa.base.viewmodels.BaseViewModel
+import com.example.lampa.mapper.mapFromDto
 import com.example.lampa.model.NewsModel
+import com.example.lampa.model.TabFilter
 import com.example.lampa.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -16,13 +20,30 @@ import javax.inject.Inject
 class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository,
 ) : BaseViewModel() {
+    private val page: ObservableField<Int> = ObservableField(1)
+    val query:ObservableField<String?> = ObservableField("")
+    private val _newsLiveData: MutableLiveData<List<NewsModel>> = MutableLiveData()
+    private val tempList:MutableList<NewsModel> = mutableListOf()
 
 
-     fun getNews() {
+    fun getNewsLiveData(): LiveData<List<NewsModel>> {
+        return _newsLiveData
+    }
+
+    fun getNewsList():List<NewsModel>?{
+        return _newsLiveData.value
+    }
+
+    fun getNews() {
         viewModelScope.launch {
-         val news =newsRepository.getNews()
-            println(news)
-
+            val news = newsRepository.getNews(page.get())
+            if (news.body()?.isNotEmpty() == true) {
+                tempList.addAll(mapFromDto(news.body()))
+                page.set(page.get()?.plus(1))
+                getNews()
+            } else {
+                _newsLiveData.postValue(tempList)
+            }
         }
 
     }

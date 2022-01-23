@@ -4,6 +4,6 @@ sealed class ActionMode {
     sealed class Navigate : ActionMode() {
     }
     sealed class Action : ActionMode() {
-
+        object AllNewsFetched : Action()
     }
 }

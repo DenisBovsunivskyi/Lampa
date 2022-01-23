@@ -29,4 +29,5 @@ inline fun <M> RecyclerCollectionAdapter<M>.addItemClickListener(
     setOnItemClickListener(listener)
 
     return listener
+
 }
