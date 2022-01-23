@@ -5,4 +5,7 @@
     <string name="text_search">Search</string>
     <string name="text_news">News</string>
     <string name="text_top">Top</string>
+    <string name="text_stories">Stories</string>
+    <string name="text_video">Video</string>
+    <string name="text_favourites">Favourites</string>
 </resources>

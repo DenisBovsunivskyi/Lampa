@@ -37,18 +37,13 @@
             app:layout_constraintTop_toTopOf="@id/image" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/MainNewsText.White"
             android:id="@+id/main_news_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="100dp"
-            android:ellipsize="end"
-            android:maxLines="3"
             android:text="@{model.title}"
-            android:textColor="@color/white"
-            android:textAlignment="textStart"
-            android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/image"
